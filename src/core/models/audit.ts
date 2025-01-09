@@ -45,5 +45,6 @@ auditSchema.statics.build = (audit: AuditAttr) => {
 
 export{
     Audit,
-    AuditAttr
+    AuditAttr,
+    
 }
