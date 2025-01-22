@@ -1,7 +1,9 @@
 import mongoose, { mongo } from "mongoose";
 
 enum Status{
-    "Active", "On Leave", "Resigned"
+    Active = "Active", 
+    OnLeave = "On Leave", 
+    Resigned = "Resigned"
 }
 
 interface Address {
@@ -54,7 +56,8 @@ const employeeSchema = new mongoose.Schema({
         required: true
     },
     status: {
-        type: Status,
+        type: String,
+        enum: Status,
         default: Status.Active,
     },
     address: {},

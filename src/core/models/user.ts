@@ -1,10 +1,13 @@
 import mongoose from 'mongoose';
 
 enum Roles {
-    "Admin", "Manager", "Employee"
+    Admin = "Admin", 
+    Manager = "Manager", 
+    Employee ="Employee"
 }
 enum Status{
-    "Active", "Inactive"
+    Active = "Active", 
+    Inactive = "Inactive"
 }
 
 
@@ -27,11 +30,13 @@ const userSchema = new mongoose.Schema({
         required: true 
     },
     role: {
-        type: Roles,
+        type: String,
+        enum: Roles,
         required: true,
     },
     status: {
-        type: Status,
+        type: String,
+        enum: Status,
         default: Status.Active,
     },
     createdAt: { 
@@ -86,4 +91,4 @@ userSchema.statics.build = (user: UserAttr) => {
 
 const User = mongoose.model<UserDoc, UserModel>('user', userSchema);
 
-export { User,UserAttr }
+export { User,UserAttr,Roles,Status }

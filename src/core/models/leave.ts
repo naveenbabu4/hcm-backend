@@ -1,10 +1,14 @@
 import mongoose, { mongo } from "mongoose";
 
 enum LeaveType {
-    "Sick Leave", "Casual Leave", "Paid Leave"
+    SickLeave = "Sick Leave", 
+    CasualLeave = "Casual Leave", 
+    PaidLeave = "Paid Leave"
 }
 enum Status{
-    "Pending", "Approved", "Rejected"
+    Pending = "Pending", 
+    Approved = "Approved", 
+    Rejected = "Rejected"
 }
 
 const leaveSchema = new mongoose.Schema({
@@ -13,7 +17,8 @@ const leaveSchema = new mongoose.Schema({
         required: true
     },
     leaveType: {
-        type: LeaveType,
+        type: String,
+        enum: LeaveType,
         required: true,
     },
     startDate: {
@@ -28,7 +33,8 @@ const leaveSchema = new mongoose.Schema({
         type: String
     },
     status: {
-        type: Status,
+        type: String,
+        enum: Status,
         default: Status.Pending,
     },
     appliedDate: {

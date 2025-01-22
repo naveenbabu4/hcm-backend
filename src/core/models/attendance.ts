@@ -1,7 +1,9 @@
 import mongoose from "mongoose";
 
 enum Status{
-    "Present", "Absent", "Leave",
+    Present = "Present", 
+    Absent = "Absent", 
+    Leave = "Leave"
 }
 const attendanceSchema = new mongoose.Schema({
     employeeId: { 
@@ -14,7 +16,8 @@ const attendanceSchema = new mongoose.Schema({
         required: true 
     },
     status: {
-        type: Status,
+        type: String,
+        enum: Status,
         default: Status.Present,
     },
     checkIn: { 

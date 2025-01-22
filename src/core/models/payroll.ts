@@ -1,7 +1,8 @@
 import mongoose from "mongoose";
 
 enum Status{
-    "Processed", "Pending",
+    Processed = "Processed", 
+    Pending = "Pending"
 }
 
 const payrollSchema = new mongoose.Schema({
@@ -34,7 +35,8 @@ const payrollSchema = new mongoose.Schema({
         required: true
     },
     status: {
-        type: Status,
+        type: String,
+        enum: Status,
         default: Status.Pending,
     },
 });

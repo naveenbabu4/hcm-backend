@@ -1,7 +1,8 @@
 import mongoose from "mongoose";
 
 enum NotificationType{
-    "Email", "In-App"
+    Email = "Email", 
+    InApp = "In-App"
 }
 const notificationSchema = new mongoose.Schema({
     recipientId: {
@@ -18,8 +19,9 @@ const notificationSchema = new mongoose.Schema({
         required: true
     },
     type: {
-        type: NotificationType,
-        default: NotificationType["In-App"],
+        type: String,
+        enum: NotificationType,
+        default: NotificationType.InApp,
     },
     isRead: {
         type: Boolean,
